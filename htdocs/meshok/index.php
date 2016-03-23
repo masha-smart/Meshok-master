@@ -20,6 +20,7 @@ if ($logged) {
 
 
             header("Location:?page=home");
+            
 
         }
         /*if ($_GET['act'] == 'blog') {
