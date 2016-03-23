@@ -44,7 +44,7 @@ body {
 
 #logo_container {
     height: 90px;
-    width: 900px;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -78,13 +78,13 @@ body {
 }
 
 #nav_block {
-    width: 400px;
+    width: 700px;
     height: 90px;
     float: right;
 }
 
 .nav_button {
-    width: 70px; /*This number you can edit when you need to add more with to fit your text inside the button */
+    width: 120px; /*This number you can edit when you need to add more with to fit your text inside the button */
     color: #FFFFFF;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -167,5 +167,22 @@ body {
     margin-top: 10px;
     text-align: right;
     text-decoration: none;
+    margin-bottom: 10px;
+}
+#addButton {
+
+    padding:8px;
+    margin-top: 10px;
+    border-radius: 5em;
+    text-decoration: none;
+    background-color: #2dcb00;
+}
+#createGroupLogin{
+    margin-bottom:10px;
+}
+#createGroupCreateButton{
+    margin-top:10px;
+}
+#parentId {
     margin-bottom: 10px;
 }

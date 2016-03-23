@@ -20,9 +20,64 @@ if ($logged) {
 
 
             header("Location:?page=home");
-            
+
 
         }
+        if ($_GET['act'] == 'addGroup') {
+            $ag_name = $_POST['cg_name'];
+            $qAddingGroup = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+
+            echo $qAddingGroup;
+            $q = mysqli_query($link, $qAddingGroup);
+
+            $qSelectGroup = "select id, created_user_id from groups where created_user_id = " . $_SESSION['user_id'];
+            $q233 = mysqli_query($link, $qSelectGroup);
+            sleep(1);
+            while ($row = mysqli_fetch_array($q233)) {
+
+                if (isset($_POST['name_1'])) {
+                    $ag_login_1 = $_POST['name_1'];
+                    $qAddingGroupUsers1 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $_SESSION['user_id'] . ")";
+                    echo $qAddingGroupUsers1;
+                    if (isset($_POST['name_2'])) {
+                        $ag_login_2 = $_POST['name_2'];
+                        $qAddingGroupUsers2 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_3'])) {
+                        $ag_login_3 = $_POST['name_3'];
+                        $qAddingGroupUsers3 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_4'])) {
+                        $ag_login_4 = $_POST['name_4'];
+                        $qAddingGroupUsers4 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_5'])) {
+                        $ag_login_5 = $_POST['name_5'];
+                        $qAddingGroupUsers5 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_6'])) {
+                        $ag_login_6 = $_POST['name_6'];
+                        $qAddingGroupUsers6 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_7'])) {
+                        $ag_login_7 = $_POST['name_7'];
+                        $qAddingGroupUsers7 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_8'])) {
+                        $ag_login_8 = $_POST['name_8'];
+                        $qAddingGroupUsers8 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+                    if (isset($_POST['name_9'])) {
+                        $ag_login_9 = $_POST['name_9'];
+                        $qAddingGroupUsers9 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                    }
+
+                }
+            }
+
+
+        }
+
         /*if ($_GET['act'] == 'blog') {
             $title = $_POST['title'];
             $text = $_POST['text'];
@@ -96,7 +151,7 @@ if ($logged) {
             }
 
         }
-        if ($_GET['act'] == 'reg'){
+        if ($_GET['act'] == 'reg') {
 
             $login = $_POST['n_login'];
             $pass = $_POST['n_pass'];
@@ -108,7 +163,7 @@ if ($logged) {
             $user_type = $_POST['n_user_type'];
 
             $qqq2 = "insert into users values (NULL, '$login', '$pass', $user_type, SYSDATE(), '$fname', '$lname', '$email', '$address', '$phone', 0, 0)";
-            
+
             mysqli_query($link, $qqq2);
             header("Location:?page=home");
 
@@ -128,7 +183,10 @@ if ($logged) {
     if (isset($_GET['page'])) {
         if ($_GET['page'] == 'profile') {
             $page = $_GET['page'];
-        }/* else if ($_GET['page'] == 'messages') {
+        } else if ($_GET['page'] == 'createGroup') {
+            $page = $_GET['page'];
+        }
+        /* else if ($_GET['page'] == 'messages') {
             $page = $_GET['page'];
         } else if ($_GET['page'] == 'inbox') {
             $page = $_GET['page'];
@@ -179,13 +237,38 @@ if ($logged) {
 <body>
 <div id="top_bar_black">
     <div id="logo_container">
-        <a href = "<?php print ($logged?"?page=profile":"?page=home"); ?>"><div id="logo_image"></div></a>
+        <a href="<?php print ($logged ? "?page=profile" : "?page=home"); ?>">
+            <div id="logo_image"></div>
+        </a>
         <div id="nav_block">
-            <a href ="?page=registration"><div class="nav_button">Home </div></a>
-            <div class="nav_button"> Contact</div>
-            <div class="nav_button"> About</div>
-            <div class="nav_button"> Links</div>
-            <a href ="?act=logout"><div class="nav_button">Выход</div></a>
+            <?php if ($logged) { ?>
+                <a href="?page=profile">
+                    <div class="nav_button">Мой Профиль</div>
+                </a>
+
+                <!--видит только продавец-->
+                <?php if ($_SESSION['user_type'] == 1) { ?>
+                    <a href="?page=">
+                        <div class="nav_button">Заказы</div>
+                    </a>
+
+                    <!--видит только покупатель-->
+                <?php } else if ($_SESSION['user_type'] == 2) { ?>
+                    <a href="?page=">
+                        <div class="nav_button">Добавить заказ</div>
+                    </a>
+                    <a href="?page=createGroup">
+                        <div class="nav_button">Создать группу</div>
+                    </a>
+                <?php } ?>
+
+                <a href="?page=">
+                    <div class="nav_button">Контакты</div>
+                </a>
+                <a href="?act=logout">
+                    <div class="nav_button">Выход</div>
+                </a>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -193,7 +276,7 @@ if ($logged) {
 <div id="content_container">
     <!-- BODY HERE!! -->
     <?php
-        include ($logged ?"logged":"notlogged")."/".$page.".php";
+    include ($logged ? "logged" : "notlogged") . "/" . $page . ".php";
     ?>
 </div>
 
