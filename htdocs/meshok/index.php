@@ -26,50 +26,103 @@ if ($logged) {
         if ($_GET['act'] == 'addGroup') {
             $ag_name = $_POST['cg_name'];
             $qAddingGroup = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
-
-            echo $qAddingGroup;
             $q = mysqli_query($link, $qAddingGroup);
-
-            $qSelectGroup = "select id, created_user_id from groups where created_user_id = " . $_SESSION['user_id'];
+            sleep(0.5);
+            $qSelectGroup = "select id, created_user_id from groups where created_user_id = " . $_SESSION['user_id'] . " LIMIT 1";
             $q233 = mysqli_query($link, $qSelectGroup);
-            sleep(1);
             while ($row = mysqli_fetch_array($q233)) {
+                $qAddingGroupUsersLeader = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $_SESSION['user_id'] . ")";
+                mysqli_query($link, $qAddingGroupUsersLeader);
+
+                
 
                 if (isset($_POST['name_1'])) {
                     $ag_login_1 = $_POST['name_1'];
-                    $qAddingGroupUsers1 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $_SESSION['user_id'] . ")";
-                    echo $qAddingGroupUsers1;
+
+                    //запрос в базу чтобы вытащить user_id
+                    $qSelectGroupForID = "select id, login from users where login = '" . $ag_login_1 . "' LIMIT 1";
+                    $querySelectGroupForID = mysqli_query($link, $qSelectGroupForID);
+                    $row_id1 = mysqli_fetch_array($querySelectGroupForID);
+
+                    //ввод в базу group_id и user_id
+                    $qAddingGroupUsers1 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id1['id'] . ")";
+                    mysqli_query($link, $qAddingGroupUsers1);
+
                     if (isset($_POST['name_2'])) {
                         $ag_login_2 = $_POST['name_2'];
-                        $qAddingGroupUsers2 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+
+                        $qSelectGroupForID2 = "select id, login from users where login = '" . $ag_login_2 . "' LIMIT 1";
+                        $querySelectGroupForID2 = mysqli_query($link, $qSelectGroupForID2);
+                        $row_id2 = mysqli_fetch_array($querySelectGroupForID2);
+
+                        $qAddingGroupUsers2 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id2['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers2);
                     }
                     if (isset($_POST['name_3'])) {
                         $ag_login_3 = $_POST['name_3'];
-                        $qAddingGroupUsers3 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                        $qSelectGroupForID3 = "select id, login from users where login = '" . $ag_login_3 . "' LIMIT 1";
+                        $querySelectGroupForID3 = mysqli_query($link, $qSelectGroupForID3);
+                        $row_id3 = mysqli_fetch_array($querySelectGroupForID3);
+
+                        $qAddingGroupUsers3 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id3['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers3);
                     }
                     if (isset($_POST['name_4'])) {
                         $ag_login_4 = $_POST['name_4'];
-                        $qAddingGroupUsers4 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+
+                        $qSelectGroupForID4 = "select id, login from users where login = '" . $ag_login_4 . "' LIMIT 1";
+                        $querySelectGroupForID4 = mysqli_query($link, $qSelectGroupForID4);
+                        $row_id4 = mysqli_fetch_array($querySelectGroupForID4);
+
+                        $qAddingGroupUsers4 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id4['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers4);
                     }
                     if (isset($_POST['name_5'])) {
                         $ag_login_5 = $_POST['name_5'];
-                        $qAddingGroupUsers5 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                        $qSelectGroupForID5 = "select id, login from users where login = '" . $ag_login_5 . "' LIMIT 1";
+                        $querySelectGroupForID5 = mysqli_query($link, $qSelectGroupForID5);
+                        $row_id5 = mysqli_fetch_array($querySelectGroupForID5);
+
+                        $qAddingGroupUsers5 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id5['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers5);
                     }
                     if (isset($_POST['name_6'])) {
                         $ag_login_6 = $_POST['name_6'];
-                        $qAddingGroupUsers6 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+
+                        $qSelectGroupForID6 = "select id, login from users where login = '" . $ag_login_6 . "' LIMIT 1";
+                        $querySelectGroupForID6 = mysqli_query($link, $qSelectGroupForID6);
+                        $row_id6 = mysqli_fetch_array($querySelectGroupForID6);
+
+                        $qAddingGroupUsers6 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id6['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers6);
                     }
                     if (isset($_POST['name_7'])) {
                         $ag_login_7 = $_POST['name_7'];
-                        $qAddingGroupUsers7 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+
+                        $qSelectGroupForID7 = "select id, login from users where login = '" . $ag_login_7 . "' LIMIT 1";
+                        $querySelectGroupForID7 = mysqli_query($link, $qSelectGroupForID7);
+                        $row_id7 = mysqli_fetch_array($querySelectGroupForID7);
+
+                        $qAddingGroupUsers7 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id7['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers7);
                     }
                     if (isset($_POST['name_8'])) {
                         $ag_login_8 = $_POST['name_8'];
-                        $qAddingGroupUsers8 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                        $qSelectGroupForID8 = "select id, login from users where login = '" . $ag_login_8 . "' LIMIT 1";
+                        $querySelectGroupForID8 = mysqli_query($link, $qSelectGroupForID8);
+                        $row_id8 = mysqli_fetch_array($querySelectGroupForID8);
+
+                        $qAddingGroupUsers8 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id8['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers8);
                     }
                     if (isset($_POST['name_9'])) {
                         $ag_login_9 = $_POST['name_9'];
-                        $qAddingGroupUsers9 = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+                        $qSelectGroupForID9 = "select id, login from users where login = '" . $ag_login_9 . "' LIMIT 1";
+                        $querySelectGroupForID9 = mysqli_query($link, $qSelectGroupForID9);
+                        $row_id9 = mysqli_fetch_array($querySelectGroupForID9);
+
+                        $qAddingGroupUsers9 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id9['id'] . ")";
+                        mysqli_query($link, $qAddingGroupUsers9);
                     }
 
                 }
@@ -312,7 +365,6 @@ if ($logged) {
 
     </div>
 </div>
-<div id="copywriteblock"> Designed by <a href="http://www.pixelateddesign.co.uk/">www.pixelateddesign.co.uk </a></div>
 
 </body>
 </html>
