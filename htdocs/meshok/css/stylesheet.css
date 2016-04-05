@@ -107,6 +107,9 @@ body {
     margin-top: 7px;
     float: left;
 }
+#logo_image:hover{
+    opacity: 0.9;
+}
 #addOrderButton {
     font-family: "Century Gothic", serif ;
     font-size: 30px;
@@ -137,7 +140,7 @@ body {
 .nav_button {
     width: 120px; /*This number you can edit when you need to add more with to fit your text inside the button */
     color: #FFFFFF;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: "Century Gothic", serif;
     font-size: 12px;
     margin-left: 5px;
     margin-top: 35px;
@@ -153,7 +156,7 @@ body {
 
 .nav_button:hover {
     text-decoration: none;
-    background-color: #333333;
+    color: #c8c8c8;
 }
 
 .nav_button_reg {
@@ -247,12 +250,15 @@ body {
     border-color: #00A5E3 ;
 }
 .input_registration select {
-    padding:8px;
+    padding:8px 4px;
     width: 240px;
     font-size: 15px;
     border-radius: 0.25em;
     border: 2px inset black;
     border-color: #00A5E3 ;
+}
+.input_registration b {
+    font-size:10px;
 }
 .check_registration_buttons{
     font-family: Verdana, serif;
@@ -270,7 +276,7 @@ body {
 .nav_button_start {
 
     width: 200px; /*This number you can edit when you need to add more with to fit your text inside the button */
-    color: #FFFFFF;
+    color: #000000;
     background-color: #73e100;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 15px;

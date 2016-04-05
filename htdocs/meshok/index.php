@@ -23,6 +23,24 @@ if ($logged) {
 
 
         }
+        if ($_GET['act'] == 'addOrder') {
+
+            $good_id = $_POST['good_type'];
+            $quantity = $_POST['quantity'];
+            $gid = $_POST['gid'];
+            if($quantity<50){
+                header("Location:?page=addOrder&mid=$gid&error=1");
+            }
+            $price = $_POST['price'];
+            if($price<1){
+                header("Location:?page=addOrder&mid=$gid&error=2");
+            }
+            $payment = $_POST['payment'];
+            $query = "INSERT into orders values(NULL, $good_id, $gid, SYSDATE(), $quantity, $price, '$payment', 0)";
+            mysqli_query($link, $query);
+            header("Location:?page=profile");
+        }
+
         if ($_GET['act'] == 'addGroup') {
             $ag_name = $_POST['cg_name'];
             $qAddingGroup = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE(), 0)";
@@ -278,6 +296,14 @@ if ($logged) {
     }
 
 }
+
+//функция изменющая начальную букву строки на заглавную для кирилицы
+function mb_ucfirst($str)
+{
+    $str = mb_strtoupper(mb_substr($str, 0, 1, 'UTF-8'), 'UTF-8') .
+        mb_strtolower(mb_substr($str, 1, mb_strlen($str), 'UTF-8'), 'UTF-8');
+    return $str;
+}//конец функции
 
 ?>
 
