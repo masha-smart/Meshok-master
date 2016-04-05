@@ -46,7 +46,7 @@ $queryL = mysqli_query($link, $query);
                 </select></p>
             <input style="display: none;" type="text" name="gid" value="<?php echo $_GET['mid']; ?>">
 
-            <p><input class="input_reg" type="submit" value="Создать заказ"></p>
+            <p><input class="button_addOrder" type="submit" value="Создать заказ"></p>
         </form>
     </div>
 </div>

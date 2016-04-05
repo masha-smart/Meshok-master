@@ -24,7 +24,7 @@ body {
 
 .block-center {
     width: 250px;
-    height: 250px;
+    min-height: 450px;
     top: 0;
     right: 0;
     bottom: 0;
@@ -53,7 +53,7 @@ body {
     margin: auto;
 }
 .block-center-addOrder {
-    width: 500px;
+    width: 400px;
     height: 100%;
     min-height: 500px;
     top: 0;
@@ -61,6 +61,20 @@ body {
     bottom: 0;
     left: 0;
     margin: auto;
+}
+.block-center-createGroup {
+    width: 350px;
+    height: 100%;
+    min-height: 500px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.block-center-createGroup a{
+    text-decoration: none;
+    font-size: 15px;
 }
 #addOrder_form{
     margin-top: 40px;
@@ -226,6 +240,34 @@ body {
 .input_reg:hover{
     background-color: #66c900;
 }
+.button_addGroup {
+    color: white;
+    margin-top: 2px;
+    margin-left: 190px;
+    margin-bottom: 20px;
+    padding: 8px 30px;
+    background-color: #73e100;
+    border-radius: 0.3em;
+    border-color: #00A5E3 ;
+}
+.button_addGroup:hover{
+    background-color: #66c900;
+}
+.button_addOrder {
+    color: white;
+    margin-left: 248px;
+    margin-bottom: 20px;
+    padding: 8px 30px;
+    background-color: #73e100;
+    border-radius: 0.3em;
+    border-color: #00A5E3 ;
+}
+.button_addOrder:hover{
+    background-color: #66c900;
+}
+.button_addGroup:hover{
+    background-color: #66c900;
+}
 .block-center-registration{
     width: 400px;
     height: 440px;
@@ -259,6 +301,18 @@ body {
 }
 .input_registration b {
     font-size:10px;
+}
+.input_add_member {
+    margin: 4px 0px 0px 0px;
+    text-align: right;
+    font-family: Verdana, serif;
+}
+.input_add_member input{
+    padding: 8px;
+    width: 204px;
+    font-size: 15px;
+    border-radius: 0.25em;
+    border-color: #00A5E3 ;
 }
 .check_registration_buttons{
     font-family: Verdana, serif;
@@ -386,22 +440,30 @@ body {
     margin-bottom: 10px;
 }
 #addButton {
-
-    padding:8px;
-    margin-top: 10px;
-    border-radius: 5em;
+    color: white;
     text-decoration: none;
+    font-weight:bold;
+    font-size: 20px;
+    border-radius: 0.3em;
     background-color: #2dcb00;
+    padding: 5px 10px 8px 10px;
+    margin-left: 10px;
+    border: 2px inset #00A5E3;
+}
+#addButton:hover{
+    background-color: #478d00;
 }
 #createGroupLogin{
-    margin-bottom:10px;
+    width: 160px;
+    margin-bottom: 15px;
 }
 #createGroupCreateButton{
     margin-top:10px;
 }
 #parentId {
-    margin-bottom: 10px;
+    margin: 20px 0 10px 0;
 }
+
 
 .simple-little-table {
     font-family:Arial, Helvetica, sans-serif;
