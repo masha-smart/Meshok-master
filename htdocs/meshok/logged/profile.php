@@ -20,9 +20,11 @@ $query = mysqli_query($link, $qqq);
             <table class="simple-little-table" cellspacing='0'>
 
                 <tr>
-                    <th>Name</th>
-                    <th>Created_at</th>
-                    <th>My partners</th>
+                    <th>Название</th>
+                    <th>Создана</th>
+                    <th>Группа</th>
+                    <th>Заказы</th>
+                    <th>Создать заказ</th>
                 </tr><!-- Table Header -->
 
                 <?php while($row = mysqli_fetch_array($query)){
@@ -40,6 +42,8 @@ $query = mysqli_query($link, $qqq);
                                         echo $row2['user_login']." ";
                                     }
                             }?></td>
+                    <td></td>
+                    <td> <a id="addOrderButton" href="?page=addOrder&mid=<?php print $row['group_id'];?>">+</a></td>
                 </tr><!-- Table Row -->
                 <?php
                         }

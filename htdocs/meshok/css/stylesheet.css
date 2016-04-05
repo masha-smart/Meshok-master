@@ -52,6 +52,22 @@ body {
     left: 0;
     margin: auto;
 }
+.block-center-addOrder {
+    width: 500px;
+    height: 100%;
+    min-height: 500px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+#addOrder_form{
+    margin-top: 40px;
+}
+.input_reg:hover{
+    background-color: #66c900;
+}
 .profile_list{
     display: inline-block;
 }
@@ -90,6 +106,11 @@ body {
     margin-left: 10px;
     margin-top: 7px;
     float: left;
+}
+#addOrderButton {
+    font-family: "Century Gothic", serif ;
+    font-size: 30px;
+    padding: 1px 11px 3px 10px;
 }
 
 #top_bar_black {
@@ -223,6 +244,14 @@ body {
     width: 220px;
     font-size: 15px;
     border-radius: 0.25em;
+    border-color: #00A5E3 ;
+}
+.input_registration select {
+    padding:8px;
+    width: 240px;
+    font-size: 15px;
+    border-radius: 0.25em;
+    border: 2px inset black;
     border-color: #00A5E3 ;
 }
 .check_registration_buttons{
@@ -467,5 +496,5 @@ body {
 .simple-little-table a:active,
 .simple-little-table a:hover {
     color: #bd5a35;
-    text-decoration:underline;
+    text-decoration:none;
 }

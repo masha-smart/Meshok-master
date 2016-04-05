@@ -26,7 +26,7 @@ if ($logged) {
         if ($_GET['act'] == 'addGroup') {
             $ag_name = $_POST['cg_name'];
             $qAddingGroup = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE(), 0)";
-
+            
             $q = mysqli_query($link, $qAddingGroup);
             sleep(0.1);
             $qSelectGroup = "select id, created_user_id from groups where created_user_id = " . $_SESSION['user_id'] . " order by created_at desc LIMIT 1";
@@ -239,6 +239,8 @@ if ($logged) {
             $page = $_GET['page'];
         } else if ($_GET['page'] == 'createGroup') {
             $page = $_GET['page'];
+        } else if ($_GET['page'] == 'addOrder') {
+            $page = $_GET['page'];
         }
         /* else if ($_GET['page'] == 'messages') {
             $page = $_GET['page'];
@@ -308,9 +310,6 @@ if ($logged) {
 
                     <!--видит только покупатель-->
                 <?php } else if ($_SESSION['user_type'] == 2) { ?>
-                    <a href="?page=">
-                        <div class="nav_button">Добавить заказ</div>
-                    </a>
                     <a href="?page=createGroup">
                         <div class="nav_button">Создать группу</div>
                     </a>
