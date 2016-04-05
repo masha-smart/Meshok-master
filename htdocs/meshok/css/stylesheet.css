@@ -32,15 +32,38 @@ body {
     margin: auto;
 
 }
-
+.block-center-button {
+    width: 400px;
+    height: 200px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+}
+.block-center-profile{
+    width: 250px;
+    height: 100%;
+    min-height: 500px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
 .profile_list{
     display: inline-block;
+}
+.profile_list p {
+    font-family: Verdana, serif;
 }
 
 #content_container {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 20px;
+    padding-top: 2px;
+    padding-bottom:2px;
     background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: right center;
@@ -56,6 +79,7 @@ body {
 #main_container {
     height: 90px;
     width: 900px;
+    padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -64,9 +88,8 @@ body {
     width: 255px;
     height: 75px;
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 7px;
     float: left;
-    background-image: url(../images/logo.gif);
 }
 
 #top_bar_black {
@@ -77,8 +100,11 @@ body {
 
 #bottom_bar_black {
     width: 100%;
-    height: 160px;
+    height: 100px;
     background-color: #000000;
+}
+#login{
+    margin-top: 50px;
 }
 
 #nav_block {
@@ -94,6 +120,8 @@ body {
     font-size: 12px;
     margin-left: 5px;
     margin-top: 35px;
+    padding:3px;
+    border-radius: 0.3em;
     text-align: center;
     float: left;
 }
@@ -105,6 +133,156 @@ body {
 .nav_button:hover {
     text-decoration: none;
     background-color: #333333;
+}
+
+.nav_button_reg {
+    width: 80px; /*This number you can edit when you need to add more with to fit your text inside the button */
+    color: #FFFFFF;
+    background-color: #73e100;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 28px;
+    padding:10px;
+    border-radius: 0.3em;
+    text-align: center;
+    float: left;
+}
+
+.nav_button_reg:link {
+    text-decoration: none;
+}
+
+.nav_button_reg:hover {
+    text-decoration: none;
+    background-color: #478d00;
+}
+
+#main_text{
+    width: 380px;
+    font-family: "Century Gothic", serif;
+    font-size: 30px;
+    margin-top: 30px;
+    color: #e3e3e3;
+    margin-left: 15px;
+}
+
+#sign_in_text{
+    margin: 6px 20px;
+    font-family: Verdana, serif;
+
+}
+.input_login {
+    margin: 2px;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 0.3em;
+    border-color: #00A5E3 ;
+}
+.input_sign_in {
+    margin: 2px;
+    padding: 8px;
+    background-color: #73e100;
+    border-radius: 0.3em;
+    border-color: #00A5E3 ;
+}
+
+
+#registration_form{
+    margin-top: 40px;
+}
+.input_reg{
+    margin-top: 2px;
+    margin-left: 120px;
+    padding: 8px 30px;
+    background-color: #73e100;
+    border-radius: 0.3em;
+    border-color: #00A5E3 ;
+}
+.input_reg:hover{
+    background-color: #66c900;
+}
+.block-center-registration{
+    width: 400px;
+    height: 440px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.input_registration {
+
+    margin: 2px;
+    text-align: right;
+    font-family: Verdana, serif;
+
+}
+.input_registration input {
+    padding: 8px;
+    width: 220px;
+    font-size: 15px;
+    border-radius: 0.25em;
+    border-color: #00A5E3 ;
+}
+.check_registration_buttons{
+    font-family: Verdana, serif;
+    font-size: 15px;
+    margin-top: 7px;
+    margin-left: 160px;
+}
+.check_registration_buttons_2{
+    font-family: Verdana, serif;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-left: 160px;
+}
+
+.nav_button_start {
+
+    width: 200px; /*This number you can edit when you need to add more with to fit your text inside the button */
+    color: #FFFFFF;
+    background-color: #73e100;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-left: 80px;
+    padding:15px 7px;
+    border-radius: 0.3em;
+    text-align: center;
+    float: left;
+
+}
+
+.nav_button_start:link {
+    text-decoration: none;
+}
+
+.nav_button_start:hover {
+    text-decoration: none;
+    background-color: #478d00;
+}
+.main_image {
+    width: 100%;
+    height:500px;
+    background-color: black;
+    margin-bottom: 2px;
+}
+.im_png {
+    opacity:0.5;
+    width:100%;
+    height: 500px;
+    background-image: url("../images/rynok.jpg");
+}
+
+.button_start{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 #header {
@@ -129,17 +307,15 @@ body {
 }
 
 #header_content_lowerline {
-    font-size: 35px;
+    font-size: 20px;
     color: #FFFFFF;
     width: 400px;
-    font-style: italic;
 }
 
 #header_content_boxcontent {
     font-size: 12px;
     color: #333333;
     width: 400px;
-    font-style: italic;
 }
 
 #header_content_lowerboxcontent {
@@ -158,6 +334,7 @@ body {
     width: 400px;
     float: left;
     margin-right: 40px;
+    font-family: "Century Gothic", serif;
 }
 
 /*Warning removing this means you must pay for this templete if you remove this you will be located and this will result in payment being required*/

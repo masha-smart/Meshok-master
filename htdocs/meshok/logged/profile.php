@@ -1,69 +1,49 @@
 <?php
-$qqq = "SELECT id, login, created_at, fname, lname, email, address, phone, rating FROM users
-						  WHERE  id = " . $_SESSION['user_id'];
+$qqq = "SELECT g.id as group_id, g.created_user_id, g.name, g.created_at, u.id, u.login FROM groups g, users u
+						  WHERE g.created_user_id=u.id and g.created_user_id = " . $_SESSION['user_id'];
 
 //print $qqq;
 
 $query = mysqli_query($link, $qqq);
 
 
-$row = mysqli_fetch_array($query)
+
 
 ?>
 <div class="parent">
-    <div class="block-center">
+    <div class="block-center-profile">
         <div class="profile_info">
 
         </div>
         <div class="profile_list">
+            <p>My GROUPS</p>
             <table class="simple-little-table" cellspacing='0'>
+
                 <tr>
-                    <th>Group ID</th>
                     <th>Name</th>
                     <th>Created_at</th>
+                    <th>My partners</th>
                 </tr><!-- Table Header -->
 
-                 <tr>
-                    <td>Генетический алгоритм</td>
-                    <td>100%</td>
-                    <td>Да</td>
+                <?php while($row = mysqli_fetch_array($query)){
+                            $qqq2 = "SELECT id, group_id, user_id, user_login FROM users_in_groups
+						        WHERE group_id = ". $row['group_id'];
+                            $query2 = mysqli_query($link, $qqq2);
+
+                    ?>
+
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['created_at']; ?></td>
+                    <td><?php while($row2 = mysqli_fetch_array($query2)){
+                                    if($row2['user_login'] != $_SESSION['user_login']){
+                                        echo $row2['user_login']." ";
+                                    }
+                            }?></td>
                 </tr><!-- Table Row -->
-
-                <tr>
-                    <td>Муравьиный алгоритм</td>
-                    <td>100%</td>
-                    <td>Да</td>
-                </tr><!-- Darker Table Row -->
-
-                <tr>
-                    <td>Метод Ньютона</td>
-                    <td>20%</td>
-                    <td>Нет</td>
-                </tr>
-
-                <tr>
-                    <td>Дифференциальный алгоритм</td>
-                    <td>80%</td>
-                    <td>Нет</td>
-                </tr>
-
-                <tr>
-                    <td>Метод наискорейшего пуска</td>
-                    <td>100%</td>
-                    <td>Да</td>
-                </tr>
-
-                <tr>
-                    <td>Случайный поиск</td>
-                    <td>23%</td>
-                    <td>Да</td>
-                </tr>
-
-                <tr>
-                    <td><a href="blog.harrix.org">Гиперссылка</a></td>
-                    <td>80%</td>
-                    <td><a href="blog.harrix.org">Да</a></td>
-                </tr>
+                <?php
+                        }
+                ?>
             </table>
         </div>
     </div>

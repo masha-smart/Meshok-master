@@ -25,16 +25,16 @@ if ($logged) {
         }
         if ($_GET['act'] == 'addGroup') {
             $ag_name = $_POST['cg_name'];
-            $qAddingGroup = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE())";
+            $qAddingGroup = "INSERT into groups values(NULL, " . $_SESSION['user_id'] . ", '$ag_name', SYSDATE(), 0)";
+
             $q = mysqli_query($link, $qAddingGroup);
-            sleep(0.5);
-            $qSelectGroup = "select id, created_user_id from groups where created_user_id = " . $_SESSION['user_id'] . " LIMIT 1";
+            sleep(0.1);
+            $qSelectGroup = "select id, created_user_id from groups where created_user_id = " . $_SESSION['user_id'] . " order by created_at desc LIMIT 1";
             $q233 = mysqli_query($link, $qSelectGroup);
             while ($row = mysqli_fetch_array($q233)) {
-                $qAddingGroupUsersLeader = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $_SESSION['user_id'] . ")";
-                mysqli_query($link, $qAddingGroupUsersLeader);
+                $qAddingGroupUsersLeader = "INSERT into users_in_groups values(NULL, " . $row['id'] . ", " . $_SESSION['user_id'].", \"". $_SESSION['user_login']."\")";
 
-                
+                mysqli_query($link, $qAddingGroupUsersLeader);
 
                 if (isset($_POST['name_1'])) {
                     $ag_login_1 = $_POST['name_1'];
@@ -45,7 +45,8 @@ if ($logged) {
                     $row_id1 = mysqli_fetch_array($querySelectGroupForID);
 
                     //ввод в базу group_id и user_id
-                    $qAddingGroupUsers1 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id1['id'] . ")";
+                    $qAddingGroupUsers1 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id1['id'] . " , \"".$row_id1['login']."\")";
+
                     mysqli_query($link, $qAddingGroupUsers1);
 
                     if (isset($_POST['name_2'])) {
@@ -55,7 +56,7 @@ if ($logged) {
                         $querySelectGroupForID2 = mysqli_query($link, $qSelectGroupForID2);
                         $row_id2 = mysqli_fetch_array($querySelectGroupForID2);
 
-                        $qAddingGroupUsers2 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id2['id'] . ")";
+                        $qAddingGroupUsers2 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id2['id'] . "  , \"".$row_id2['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers2);
                     }
                     if (isset($_POST['name_3'])) {
@@ -64,7 +65,7 @@ if ($logged) {
                         $querySelectGroupForID3 = mysqli_query($link, $qSelectGroupForID3);
                         $row_id3 = mysqli_fetch_array($querySelectGroupForID3);
 
-                        $qAddingGroupUsers3 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id3['id'] . ")";
+                        $qAddingGroupUsers3 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id3['id'] . " , \"".$row_id3['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers3);
                     }
                     if (isset($_POST['name_4'])) {
@@ -74,7 +75,7 @@ if ($logged) {
                         $querySelectGroupForID4 = mysqli_query($link, $qSelectGroupForID4);
                         $row_id4 = mysqli_fetch_array($querySelectGroupForID4);
 
-                        $qAddingGroupUsers4 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id4['id'] . ")";
+                        $qAddingGroupUsers4 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id4['id'] . " , \"".$row_id4['login']."\") ";
                         mysqli_query($link, $qAddingGroupUsers4);
                     }
                     if (isset($_POST['name_5'])) {
@@ -83,7 +84,7 @@ if ($logged) {
                         $querySelectGroupForID5 = mysqli_query($link, $qSelectGroupForID5);
                         $row_id5 = mysqli_fetch_array($querySelectGroupForID5);
 
-                        $qAddingGroupUsers5 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id5['id'] . ")";
+                        $qAddingGroupUsers5 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id5['id'] . " , \"".$row_id5['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers5);
                     }
                     if (isset($_POST['name_6'])) {
@@ -93,7 +94,7 @@ if ($logged) {
                         $querySelectGroupForID6 = mysqli_query($link, $qSelectGroupForID6);
                         $row_id6 = mysqli_fetch_array($querySelectGroupForID6);
 
-                        $qAddingGroupUsers6 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id6['id'] . ")";
+                        $qAddingGroupUsers6 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id6['id'] . " , \"".$row_id6['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers6);
                     }
                     if (isset($_POST['name_7'])) {
@@ -103,7 +104,7 @@ if ($logged) {
                         $querySelectGroupForID7 = mysqli_query($link, $qSelectGroupForID7);
                         $row_id7 = mysqli_fetch_array($querySelectGroupForID7);
 
-                        $qAddingGroupUsers7 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id7['id'] . ")";
+                        $qAddingGroupUsers7 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id7['id'] . " , \"".$row_id7['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers7);
                     }
                     if (isset($_POST['name_8'])) {
@@ -112,7 +113,7 @@ if ($logged) {
                         $querySelectGroupForID8 = mysqli_query($link, $qSelectGroupForID8);
                         $row_id8 = mysqli_fetch_array($querySelectGroupForID8);
 
-                        $qAddingGroupUsers8 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id8['id'] . ")";
+                        $qAddingGroupUsers8 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id8['id'] . " , \"".$row_id8['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers8);
                     }
                     if (isset($_POST['name_9'])) {
@@ -121,7 +122,7 @@ if ($logged) {
                         $querySelectGroupForID9 = mysqli_query($link, $qSelectGroupForID9);
                         $row_id9 = mysqli_fetch_array($querySelectGroupForID9);
 
-                        $qAddingGroupUsers9 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id9['id'] . ")";
+                        $qAddingGroupUsers9 = "INSERT into users_in_groups values(NULL," . $row['id'] . " ," . $row_id9['id'] . " , \"".$row_id9['login']."\")";
                         mysqli_query($link, $qAddingGroupUsers9);
                     }
 
@@ -291,7 +292,7 @@ if ($logged) {
 <div id="top_bar_black">
     <div id="logo_container">
         <a href="<?php print ($logged ? "?page=profile" : "?page=home"); ?>">
-            <div id="logo_image"></div>
+            <div id="logo_image"><img src="images/logo.png" width="240" ></div>
         </a>
         <div id="nav_block">
             <?php if ($logged) { ?>
@@ -321,15 +322,17 @@ if ($logged) {
                 <a href="?act=logout">
                     <div class="nav_button">Выход</div>
                 </a>
+            <?php } else if ($logged != true) { ?>
+                <a href="#login_block"><div class="nav_button_reg" style="margin-left: 60%">SIGN IN</div></a>
+                <a href="?page=registration"><div class="nav_button_reg">SIGN UP</div></a>
             <?php } ?>
-        </div>
     </div>
 </div>
 
 <div id="content_container">
     <!-- BODY HERE!! -->
     <?php
-    include ($logged ? "logged" : "notlogged") . "/" . $page . ".php";
+        include ($logged ? "logged" : "notlogged") . "/" . $page . ".php";
     ?>
 </div>
 
@@ -337,27 +340,17 @@ if ($logged) {
 <div id="bottom_bar_black">
     <div id="main_container">
         <div id="header_lower">
-            <div id="header_content_lowerline">Contact
-                <div id="header_content_lowerboxcontent">148 Blackways Street<br/>
-                    Hargary<br/>
-                    Lingvillage<br/>
-                    HG43 9HA <BR/>
-                    info@domainhappy.com<br/>
-                    www.domainhappy.com<br/>
-                    01982 698 621<BR/>
+            <div id="header_content_lowerline">
+                <div id="header_content_lowerboxcontent">
                 </div>
             </div>
         </div>
 
         <div id="header_lower">
-            <div id="header_content_lowerline">Info
-                <div id="header_content_lowerboxcontent">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                    vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                    sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                    vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                    sanctus est
+            <div id="header_content_lowerline">Contacts
+                <div id="header_content_lowerboxcontent"> Короткова Мария <br/>
+                    +7(708) 903 0888<br/>
+                    favourite-best@mail.ru
                 </div>
             </div>
         </div>
